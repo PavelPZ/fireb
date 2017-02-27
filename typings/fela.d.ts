@@ -2,17 +2,17 @@
 
   import React from 'react';
 
-  type TProps = {};
-  type TRule = (props: TProps) => IStyle;
+  type TRuleProps = {};
+  type TRule = (props: TRuleProps) => IStyle; 
   type TKeyFrame = TRule;
   type TRendererCreator = (config?: IConfig) => IRenderer;
   type TPlugin = (style: IStyle) => IStyle; //http://fela.js.org/docs/advanced/Plugins.html
   type TEnhancer = (renderer: IRenderer) => IRenderer; //http://fela.js.org/docs/advanced/Enhancers.html
 
   interface IRenderer {
-    renderRule(rule: TRule, props: TProps): void;
-    renderKeyframe(keyFrame: TKeyFrame, props: TProps): void;
-    renderFont(family: string, files: Array<string>, props: TProps): void;
+    renderRule(rule: TRule, props: TRuleProps): void;
+    renderKeyframe(keyFrame: TKeyFrame, props: TRuleProps): void;
+    renderFont(family: string, files: Array<string>, props: TRuleProps): void;
     renderStatic(style: string, selector?: string): void;
     renderToString(): string;
     subscribe(event: (msg: string) => void): { unsubscribe: () => void; }
@@ -29,7 +29,7 @@
   }
 
   interface IStyle extends React.CSSProperties {
-    //TODO: add properties, missing in React CSSProperties
+    //TODO: add properties, missing in React.CSSProperties
   }
 
   function createRenderer(config?: IConfig): IRenderer;

@@ -33,7 +33,19 @@ const felaTest = () => {
     backgroundColor: 'red',
     fontSize: props.size,
     color: 'blue'
-  })
+  });
 
-  renderer.renderRule(rule, { size: '12px' })
+  const rule2: fela.TRule = (props: { size: string; }) => ({
+    backgroundColor: 'red',
+    padding: props.size,
+    color: 'red'
+  });
+
+  const st = renderer.renderRule(rule, { size: '12px' })
+
+  felaDOM.render(renderer, document.getElementById('fela-style'));
+
+  const st2 = renderer.renderRule(rule2, { size: '16px' })
+
+  debugger;
 };
